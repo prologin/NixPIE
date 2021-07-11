@@ -5,7 +5,14 @@
     inputs.nixpie.nixosModules.profiles.graphical
   ];
 
-  netboot.enable = true;
+  netboot = {
+    enable = true;
+    torrent = {
+      webseed = {
+        url = "https://prologin.org/static/epita-pie/";
+      };
+    };
+  };
 
   cri.sddm.title = "NixOS Girls Can Code!";
   cri.salt.master = "salt.pie.prologin.dev";
