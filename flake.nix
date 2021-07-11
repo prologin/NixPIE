@@ -6,7 +6,6 @@
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     nixpie.url = "git+https://gitlab.cri.epita.fr/cri/infrastructure/nixpie.git";
     futils.url = "github:numtide/flake-utils";
-    impermanence.url = "github:nix-community/impermanence";
   };
 
   outputs =
@@ -15,7 +14,6 @@
     , nixpkgs-master
     , nixpie
     , futils
-    , impermanence
     } @ inputs:
     let
       inherit (nixpkgs) lib;
@@ -24,11 +22,13 @@
 
       pkgImport = pkgs: system: withOverrides:
         import pkgs {
+          overlays = [
+            nixpie.overlay
+          ];
           inherit system;
           config = {
             allowUnfree = true;
           };
-          overlays = (lib.attrValues self.overlays);
         };
 
       pkgset = system: {
@@ -37,6 +37,10 @@
       };
 
       anySystemOutputs = {
+        nixosModules = {
+          profiles = import ./profiles;
+        };
+
         nixosConfigurations =
           let
             system = "x86_64-linux";
@@ -50,6 +54,6 @@
 
       };
     in
-    recursiveUpdate anySystemOutputs;
+    recursiveUpdate anySystemOutputs { packages.x86_64-linux = (pkgset "x86_64-linux").pkgs; };
 }
 

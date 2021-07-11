@@ -4,7 +4,6 @@
 , pkgset
 , self
 , system
-, impermanence
 , nixpie
 , ...
 }@inputs:
@@ -24,7 +23,7 @@ let
 
           global = {
             system.name = imageName;
-            networking.hostName = ""; # Use the DHCP provided hostname
+            networking.hostName = lib.mkForce ""; # Use the DHCP provided hostname
             nix.nixPath = [
               "nixpkgs=${nixpkgs}"
               "nixpkgs-master=${nixpkgs-master}"
@@ -46,11 +45,10 @@ let
           local = import "${toString ./.}/${imageName}.nix";
 
           flakeModules =
-            builtins.attrValues (removeAttrs self.nixosModules [ "profiles" "sadm" ]);
+            builtins.attrValues (removeAttrs self.nixosModules [ "profiles" ]);
 
         in
         lib.concat flakeModules [
-          impermanence.nixosModules.impermanence
           core
           global
           local
