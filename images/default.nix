@@ -49,10 +49,11 @@ let
 
         in
         lib.concat flakeModules [
-          core
+          nixpie.nixosModules.nixpie
+
+          nixpie.nixosModules.profiles.core core
           global
           local
-          nixpie.nixosModules.nixpie
         ];
     };
 
