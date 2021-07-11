@@ -34,7 +34,7 @@ let
             nix.registry = {
               nixpkgs.flake = nixpkgs;
               nixpkgs-master.flake = nixpkgs-master;
-              nixpie.flake = self;
+              nixpie.flake = nixpie;
               sadm.flake = self;
             };
 

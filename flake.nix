@@ -2,20 +2,20 @@
   description = "Prologin NixOS configuration for 2021 finale";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
-    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     nixpie.url = "git+https://gitlab.cri.epita.fr/cri/infrastructure/nixpie.git";
+    nixpkgsMuEditor.url = "github:rissson/nixpkgs/mu-editor";
     futils.url = "github:numtide/flake-utils";
   };
 
   outputs =
     { self
-    , nixpkgs
-    , nixpkgs-master
     , nixpie
+    , nixpkgsMuEditor
     , futils
     } @ inputs:
     let
+      inherit (nixpie.inputs) nixpkgs;
+      nixpkgs-master = nixpie.inputs.nixpkgsMaster;
       inherit (nixpkgs) lib;
       inherit (lib) recursiveUpdate;
       inherit (futils.lib) eachDefaultSystem;
@@ -48,12 +48,13 @@
           (import ./images (
             recursiveUpdate inputs {
               inherit lib system;
+              inherit nixpkgs nixpkgs-master;
               pkgset = pkgset system;
             }
           ));
 
       };
     in
-    recursiveUpdate anySystemOutputs { packages.x86_64-linux = (pkgset "x86_64-linux").pkgs; };
+    recursiveUpdate anySystemOutputs { };
 }
 

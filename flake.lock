@@ -67,22 +67,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-master": {
-      "locked": {
-        "lastModified": 1625929328,
-        "narHash": "sha256-CU/j/FOWfV9qUQuc+qzxb8RCq0A2D9ZQ5I+NYniDd1o=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "21c20ba1b4dc70d1d940c9c3e02cdcbcdd7e1f20",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgsMaster": {
       "locked": {
         "lastModified": 1622394678,
@@ -95,6 +79,22 @@
       "original": {
         "owner": "NixOS",
         "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgsMuEditor": {
+      "locked": {
+        "lastModified": 1626040792,
+        "narHash": "sha256-f/TFmLmRFg54/nJk2cFWDccqsbSZwhMIbXFDsCngeJ4=",
+        "owner": "rissson",
+        "repo": "nixpkgs",
+        "rev": "66e4ec40d5dcefc8f70a2ced5b070596ac894e85",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rissson",
+        "ref": "mu-editor",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -115,28 +115,11 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1625692408,
-        "narHash": "sha256-e9L3TLLDVIJpMnHtiNHJE62oOh6emRtSZ244bgYJUZs=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "c06613c25df3fe1dd26243847a3c105cf6770627",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-21.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "futils": "futils",
         "nixpie": "nixpie",
-        "nixpkgs": "nixpkgs_2",
-        "nixpkgs-master": "nixpkgs-master"
+        "nixpkgsMuEditor": "nixpkgsMuEditor"
       }
     }
   },
