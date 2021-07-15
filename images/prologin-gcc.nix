@@ -31,6 +31,7 @@
 
   environment.systemPackages = with config.cri.programs; dev ++ [
     inputs.nixpkgsMuEditor.legacyPackages.x86_64-linux.mu-editor
+    pkgs.python3Packages.pygame
   ];
 
   services.udev.extraRules = ''
