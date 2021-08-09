@@ -29,9 +29,13 @@
   cri.sddm.title = "NixOS Girls Can Code!";
   cri.salt.master = "salt.pie.prologin.dev";
 
-  environment.systemPackages = with config.cri.programs; dev ++ [
+  cri.programs.packages = with config.cri.programs.packageBundles; [ dev ];
+  cri.programs.pythonPackages = [
+    (ps: with ps; [ pygame ])
+  ];
+
+  environment.systemPackages = [
     inputs.nixpkgsMuEditor.legacyPackages.x86_64-linux.mu-editor
-    pkgs.python3Packages.pygame
   ];
 
   services.udev.extraRules = ''

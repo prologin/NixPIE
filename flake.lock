@@ -38,11 +38,11 @@
         "nixpkgsUnstable": "nixpkgsUnstable"
       },
       "locked": {
-        "lastModified": 1623789398,
-        "narHash": "sha256-orljvoTD2G+VBVn64LVTcE+vVr35T9zqThGGxydabs4=",
+        "lastModified": 1628518245,
+        "narHash": "sha256-c5GVBtrxv2wMQeUOeggrpwtzKKniMXAiCO5T4ttG6+o=",
         "ref": "master",
-        "rev": "e9c9dd28ec7b4880dd5ac1ba7adafdf3c4e942b3",
-        "revCount": 75,
+        "rev": "2bd21ca006dac9d938706262d077846e2b3e6c2d",
+        "revCount": 76,
         "type": "git",
         "url": "https://gitlab.cri.epita.fr/cri/infrastructure/nixpie.git"
       },
