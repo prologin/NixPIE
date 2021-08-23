@@ -1,11 +1,11 @@
-{ config, inputs, lib, pkgs, ... }:
-
+{ config, inputs, lib, pkgs, ...}:
 {
   imports = [
     inputs.nixpie.nixosModules.profiles.graphical
   ];
 
   i18n.defaultLocale = lib.mkForce "fr_FR.UTF-8";
+  i18n.supportedLocales = lib.mkForce [ "fr_FR.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" ];
 
   cri.xfce.enable = true;
   cri.i3.enable = lib.mkForce false;
@@ -16,6 +16,18 @@
       sddm.enable = lib.mkForce false;
       lightdm = {
         enable = true;
+        background = "${inputs.self.packages.x86_64-linux.prologin-gcc-background}/background.jpg";
+        greeters.gtk.indicators = [
+          "~host"
+          "~spacer"
+          "~clock"
+          "~spacer"
+          "~session"
+          "~language"
+          "~layout"
+          "~a11y"
+          "~power"
+        ];
       };
       setupCommands = ''
         ${pkgs.xorg.setxkbmap}/bin/setxkbmap fr,us,gb
