@@ -13,10 +13,9 @@
   services.xserver = {
     layout = lib.mkForce "fr,us,gb";
     displayManager = {
-      sddm.enable = lib.mkForce false;
+      sddm.enable = true;
       lightdm = {
-        enable = true;
-        background = "${inputs.self.packages.x86_64-linux.prologin-gcc-background}/background.jpg";
+        enable = false;
         greeters.gtk.indicators = [
           "~host"
           "~spacer"
