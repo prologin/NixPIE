@@ -4,8 +4,8 @@ pkgs.stdenv.mkDerivation rec {
   name = "prologin-gcc-background";
 
   src = pkgs.fetchurl {
-    url = "https://girlscancode.fr/static/archives/gcc/2021/poster.full.jpg";
-    sha256 = "d0dcb42898c7ad93d9f4b96356007ea59a33a2aff40c70d3787d2e36ac3ce7b0";
+    url = "https://girlscancode.fr/static/lightdm.png";
+    sha256 = "84ff2002016a3dd000f05e4fe3f13b2f195db9b40eefc31a5c610acc6c38ef2e";
   };
 
   unpackPhase = ":";

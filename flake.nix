@@ -20,6 +20,9 @@
       inherit (lib) recursiveUpdate;
       inherit (futils.lib) eachDefaultSystem;
 
+      pkgs = import nixpkgs { inherit system; };
+      system = "x86_64-linux";
+
       pkgImport = pkgs: system: withOverrides:
         import pkgs {
           overlays = [
@@ -41,6 +44,13 @@
           profiles = import ./profiles;
         };
 
+        packages =
+          {
+              "${system}" = {
+                prologin-gcc-background = import ./pkgs/gcc-background.nix { inherit pkgs; };
+              };
+          };
+
         nixosConfigurations =
           let
             system = "x86_64-linux";
@@ -49,6 +59,7 @@
             recursiveUpdate inputs {
               inherit lib system;
               inherit nixpkgs nixpkgs-master;
+              inherit (self.packages.${system}) prologin-gcc-background;
               pkgset = pkgset system;
             }
           ));

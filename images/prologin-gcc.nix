@@ -13,9 +13,14 @@
   services.xserver = {
     layout = lib.mkForce "fr,us,gb";
     displayManager = {
-      sddm.enable = true;
+      sddm.enable = lib.mkForce false;
       lightdm = {
-        enable = false;
+        enable = true;
+        background = "${inputs.self.packages.x86_64-linux.prologin-gcc-background}/background.jpg";
+        extraConfig = ''
+          [SeatDefaults]
+          greeter-hide-users=true
+        '';
         greeters.gtk.indicators = [
           "~host"
           "~spacer"
@@ -27,6 +32,10 @@
           "~a11y"
           "~power"
         ];
+        greeters.gtk.extraConfig = ''
+          panel-position=bottom
+          hide-user-image=true
+        '';
       };
       setupCommands = ''
         ${pkgs.xorg.setxkbmap}/bin/setxkbmap fr,us,gb
@@ -79,6 +88,7 @@
       override_shell = ${config.users.defaultUserShell}/bin/bash
 
       [domain/LDAP]
+      debug_level = 9
       cache_credentials = true
       enumerate = true
 
@@ -92,7 +102,7 @@
       ldap_search_base = dc=prologin,dc=org
       ldap_user_search_base = ou=users,dc=prologin,dc=org?subtree?(objectClass=posixAccount)
       ldap_group_search_base = ou=groups,dc=prologin,dc=org?subtree?(objectClass=posixGroup)
-      ldap_id_user_start_tls = true
+      ldap_id_use_start_tls = true
       ldap_schema = rfc2307bis
       ldap_user_gecos = cn
 
@@ -108,12 +118,13 @@
     daemon.enable = true;
   };
 
-  cri.users.enable = lib.mkForce false;
+  cri.users.enable = true;
 
   krb5 = {
     enable = true;
     libdefaults = {
       dns_lookup_kdc = true;
+      default_realm = "PROLOGIN.ORG";
       dns_lookup_realm = false;
       rdns = false;
     };
