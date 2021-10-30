@@ -1,6 +1,6 @@
 { lib
 , nixpkgs
-, nixpkgs-master
+, nixpkgsMaster
 , pkgset
 , self
 , system
@@ -26,14 +26,14 @@ let
             networking.hostName = lib.mkForce ""; # Use the DHCP provided hostname
             nix.nixPath = [
               "nixpkgs=${nixpkgs}"
-              "nixpkgs-master=${nixpkgs-master}"
+              "nixpkgsMaster=${nixpkgsMaster}"
             ];
 
             nixpkgs = { inherit (pkgset) pkgs; };
 
             nix.registry = {
               nixpkgs.flake = nixpkgs;
-              nixpkgs-master.flake = nixpkgs-master;
+              nixpkgsMaster.flake = nixpkgsMaster;
               nixpie.flake = nixpie;
               sadm.flake = self;
             };

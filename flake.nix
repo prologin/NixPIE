@@ -14,8 +14,7 @@
     , futils
     } @ inputs:
     let
-      inherit (nixpie.inputs) nixpkgs;
-      nixpkgs-master = nixpie.inputs.nixpkgsMaster;
+      inherit (nixpie.inputs) nixpkgs nixpkgsMaster nixpkgsUnstable;
       inherit (nixpkgs) lib;
       inherit (lib) recursiveUpdate;
       inherit (futils.lib) eachDefaultSystem;
@@ -36,7 +35,7 @@
 
       pkgset = system: {
         pkgs = pkgImport nixpkgs system true;
-        pkgsMaster = pkgImport nixpkgs-master system false;
+        pkgsMaster = pkgImport nixpkgsMaster system false;
       };
 
       anySystemOutputs = {
@@ -58,7 +57,7 @@
           (import ./images (
             recursiveUpdate inputs {
               inherit lib system;
-              inherit nixpkgs nixpkgs-master;
+              inherit nixpkgs nixpkgsMaster nixpkgsUnstable;
               inherit (self.packages.${system}) prologin-gcc-background;
               pkgset = pkgset system;
             }

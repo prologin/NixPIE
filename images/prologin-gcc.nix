@@ -55,6 +55,9 @@
   cri.sddm.title = "NixOS Girls Can Code!";
   cri.salt.master = "salt.pie.prologin.org";
 
+  cri.machine-state.enable = lib.mkForce false;
+  cri.nuc-led-setter.enable = lib.mkForce false;
+
   cri.programs.packages = with config.cri.programs.packageBundles; [ dev ];
   cri.programs.pythonPackages = [
     (ps: with ps; [ pygame ])

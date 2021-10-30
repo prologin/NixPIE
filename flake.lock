@@ -1,5 +1,37 @@
 {
   "nodes": {
+    "docker-nixpkgs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1631525111,
+        "narHash": "sha256-dJKw280B1Hp0f6tSkBtkY0nrMT0DR/bmerrS3cQdBjI=",
+        "owner": "nix-community",
+        "repo": "docker-nixpkgs",
+        "rev": "df7f64139a0b2384fb2448dc2a406815f8d03867",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "docker-nixpkgs",
+        "type": "github"
+      }
+    },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1627913399,
+        "narHash": "sha256-hY8g6H2KFL8ownSiFeMOjwPC8P0ueXpCVEbxgda3pko=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "12c64ca55c1014cdc1b16ed5a804aa8576601ff2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "futils": {
       "locked": {
         "lastModified": 1623875721,
@@ -17,11 +49,11 @@
     },
     "futils_2": {
       "locked": {
-        "lastModified": 1605370193,
-        "narHash": "sha256-YyMTf3URDL/otKdKgtoMChu4vfVL3vCMkRqpGifhUn0=",
+        "lastModified": 1629481132,
+        "narHash": "sha256-JHgasjPR0/J1J3DRm4KxM4zTyAj4IOJY8vIl75v/kPI=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "5021eac20303a61fafe17224c087f5519baed54d",
+        "rev": "997f7efcb746a9c140ce1f13c72263189225f482",
         "type": "github"
       },
       "original": {
@@ -30,19 +62,75 @@
         "type": "github"
       }
     },
-    "nixpie": {
+    "futils_3": {
+      "locked": {
+        "lastModified": 1629481132,
+        "narHash": "sha256-JHgasjPR0/J1J3DRm4KxM4zTyAj4IOJY8vIl75v/kPI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "997f7efcb746a9c140ce1f13c72263189225f482",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "futils_4": {
+      "locked": {
+        "lastModified": 1629481132,
+        "narHash": "sha256-JHgasjPR0/J1J3DRm4KxM4zTyAj4IOJY8vIl75v/kPI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "997f7efcb746a9c140ce1f13c72263189225f482",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "machine-state": {
       "inputs": {
-        "futils": "futils_2",
-        "nixpkgs": "nixpkgs",
-        "nixpkgsMaster": "nixpkgsMaster",
-        "nixpkgsUnstable": "nixpkgsUnstable"
+        "futils": "futils_3",
+        "nixpkgs": [
+          "nixpie",
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1628518245,
-        "narHash": "sha256-c5GVBtrxv2wMQeUOeggrpwtzKKniMXAiCO5T4ttG6+o=",
+        "lastModified": 1632532247,
+        "narHash": "sha256-xxBwxx6YN7ke8rJcTuwALF+bml4Xl/4i+df/P8qM4rs=",
         "ref": "master",
-        "rev": "2bd21ca006dac9d938706262d077846e2b3e6c2d",
-        "revCount": 76,
+        "rev": "4c03a281e7df70b3ef5d77340a68a95924610cd4",
+        "revCount": 75,
+        "type": "git",
+        "url": "https://gitlab.cri.epita.fr/cri/packages/machine-state.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://gitlab.cri.epita.fr/cri/packages/machine-state.git"
+      }
+    },
+    "nixpie": {
+      "inputs": {
+        "docker-nixpkgs": "docker-nixpkgs",
+        "flake-compat": "flake-compat",
+        "futils": "futils_2",
+        "machine-state": "machine-state",
+        "nixpkgs": "nixpkgs",
+        "nixpkgsMaster": "nixpkgsMaster",
+        "nixpkgsUnstable": "nixpkgsUnstable",
+        "nuc-led-setter": "nuc-led-setter"
+      },
+      "locked": {
+        "lastModified": 1635264635,
+        "narHash": "sha256-t3vpcYnVCZpk3HE0sZeh/Kjyp6E7ahVo7a3e/8srjdU=",
+        "ref": "master",
+        "rev": "985082b3aa89294b8a0efa3100f12153841c0158",
+        "revCount": 217,
         "type": "git",
         "url": "https://gitlab.cri.epita.fr/cri/infrastructure/nixpie.git"
       },
@@ -53,11 +141,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1622820998,
-        "narHash": "sha256-1wobInAwYtngN9M4ZqdcIOXWvoyvPt2vDI9TcOvQyKA=",
+        "lastModified": 1630481079,
+        "narHash": "sha256-leWXLchbAbqOlLT6tju631G40SzQWPqaAXQG3zH1Imw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "aa576357673d609e618d87db43210e49d4bb1789",
+        "rev": "110a2c9ebbf5d4a94486854f18a37a938cfacbbb",
         "type": "github"
       },
       "original": {
@@ -69,11 +157,11 @@
     },
     "nixpkgsMaster": {
       "locked": {
-        "lastModified": 1622394678,
-        "narHash": "sha256-CVfHMpYtQFJXEeDlx3aJnOqSlkviibR4nzu/I+ANWQU=",
+        "lastModified": 1630575260,
+        "narHash": "sha256-7EYCTuE1I7GQpJgc3Qh9xStMPG1yd0ifS+wpW0kN84A=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1788d3d01509a7c943d093661f11a904ff8db2b9",
+        "rev": "2096a1678f6b1bba91e01410b5baac0fc2cde144",
         "type": "github"
       },
       "original": {
@@ -101,11 +189,11 @@
     },
     "nixpkgsUnstable": {
       "locked": {
-        "lastModified": 1622059058,
-        "narHash": "sha256-t1/ZMtyxClVSfcV4Pt5C1YpkeJ/UwFF3oitLD7Ch/UA=",
+        "lastModified": 1633329294,
+        "narHash": "sha256-0LpQLS4KMgxslMgmDHmxG/5twFlXDBW9z4Or1iOrCvU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "84aa23742f6c72501f9cc209f29c438766f5352d",
+        "rev": "ee084c02040e864eeeb4cf4f8538d92f7c675671",
         "type": "github"
       },
       "original": {
@@ -113,6 +201,28 @@
         "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
+      }
+    },
+    "nuc-led-setter": {
+      "inputs": {
+        "futils": "futils_4",
+        "nixpkgs": [
+          "nixpie",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1630892898,
+        "narHash": "sha256-Gm2t7T6BI4qxqARWqGyPH9FMtFA3tKXV92MHqcXY2M0=",
+        "ref": "master",
+        "rev": "92c5f675c72569a28b47adbf04790864f2cb191c",
+        "revCount": 56,
+        "type": "git",
+        "url": "https://gitlab.cri.epita.fr/cri/packages/nuc-led-setter.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://gitlab.cri.epita.fr/cri/packages/nuc-led-setter.git"
       }
     },
     "root": {
