@@ -48,6 +48,7 @@
           {
               "${system}" = {
                 prologin-gcc-background = import ./pkgs/gcc-background.nix { inherit pkgs; };
+                gcc-wallpaper-2021 = import ./pkgs/gcc-wallpaper-2021.nix { inherit pkgs; };
               };
           };
 

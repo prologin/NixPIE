@@ -149,7 +149,7 @@
 
   environment.extraInit =
     let
-      gcc-background = inputs.self.packages.x86_64-linux.prologin-gcc-background;
+      gcc-background = inputs.self.packages.x86_64-linux.gcc-wallpaper-2021;
     in
       ''
         if [ "$(id -u)" -ge 10000 ]; then
