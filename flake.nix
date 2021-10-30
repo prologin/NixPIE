@@ -3,7 +3,7 @@
 
   inputs = {
     nixpie.url = "git+https://gitlab.cri.epita.fr/cri/infrastructure/nixpie.git";
-    nixpkgsMuEditor.url = "github:rissson/nixpkgs/mu-editor";
+    nixpkgsMuEditor.url = "github:prologin/nixpkgs/mu-editor";
     futils.url = "github:numtide/flake-utils";
   };
 

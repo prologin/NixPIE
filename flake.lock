@@ -85,15 +85,15 @@
     },
     "nixpkgsMuEditor": {
       "locked": {
-        "lastModified": 1626040792,
-        "narHash": "sha256-f/TFmLmRFg54/nJk2cFWDccqsbSZwhMIbXFDsCngeJ4=",
-        "owner": "rissson",
+        "lastModified": 1635588929,
+        "narHash": "sha256-OI56rGuHRnntujQzvaVPa8YDj4s2L9Cq9yU47taVhvQ=",
+        "owner": "prologin",
         "repo": "nixpkgs",
-        "rev": "66e4ec40d5dcefc8f70a2ced5b070596ac894e85",
+        "rev": "ba9ab541c659b4843a3b50d9d620a3870407264a",
         "type": "github"
       },
       "original": {
-        "owner": "rissson",
+        "owner": "prologin",
         "ref": "mu-editor",
         "repo": "nixpkgs",
         "type": "github"
