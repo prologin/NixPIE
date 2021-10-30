@@ -147,12 +147,20 @@
   };
 
 
-  environment.extraInit = ''
-    if [ "$(id -u)" -ge 10000 ]; then
-      export AFS_HOME="${config.services.openafsClient.mountPoint}/${config.services.openafsClient.cellName}/user/$USER"
-      ${config.services.openafsClient.packages.programs}/bin/aklog
-      [ -e $HOME/afs ] || ${pkgs.coreutils}/bin/ln -s $AFS_HOME $HOME/afs
-      [ -e $HOME/shared ] || ${pkgs.coreutils}/bin/ln -s ${config.services.openafsClient.mountPoint}/${config.services.openafsClient.cellName}/shared $HOME/shared
-    fi
-  '';
+  environment.extraInit =
+    let
+      gcc-background = inputs.self.packages.x86_64-linux.prologin-gcc-background;
+    in
+      ''
+        if [ "$(id -u)" -ge 10000 ]; then
+          export AFS_HOME="${config.services.openafsClient.mountPoint}/${config.services.openafsClient.cellName}/user/$USER"
+          ${config.services.openafsClient.packages.programs}/bin/aklog
+          [ -e $HOME/afs ] || ${pkgs.coreutils}/bin/ln -s $AFS_HOME $HOME/afs
+          [ -e $HOME/shared ] || ${pkgs.coreutils}/bin/ln -s ${config.services.openafsClient.mountPoint}/${config.services.openafsClient.cellName}/shared $HOME/shared
+        fi
+
+        _DISPLAY="$(${pkgs.xorg.xrandr}/bin/xrandr | ${pkgs.gnugrep}/bin/grep -w connected | ${pkgs.coreutils}/bin/cut -d' ' -f1)"
+        xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor''${_DISPLAY}/workspace0/last-image \
+          --create --type string --set ${gcc-background}/background.jpg
+      '';
 }
