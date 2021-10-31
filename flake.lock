@@ -85,11 +85,11 @@
     },
     "nixpkgsMuEditor": {
       "locked": {
-        "lastModified": 1635588929,
-        "narHash": "sha256-OI56rGuHRnntujQzvaVPa8YDj4s2L9Cq9yU47taVhvQ=",
+        "lastModified": 1635694133,
+        "narHash": "sha256-oyTxh7Hep+5CaMTX1E7geME0oxf3I0H7AxTCgH4fUOU=",
         "owner": "prologin",
         "repo": "nixpkgs",
-        "rev": "ba9ab541c659b4843a3b50d9d620a3870407264a",
+        "rev": "ec125417b126d876362c039107372c8f8cd91ae3",
         "type": "github"
       },
       "original": {
