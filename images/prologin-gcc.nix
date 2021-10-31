@@ -16,7 +16,7 @@
       sddm.enable = lib.mkForce false;
       lightdm = {
         enable = true;
-        background = "${inputs.self.packages.x86_64-linux.prologin-gcc-background}/background.jpg";
+        background = "${inputs.prolowalls.packages.x86_64-linux.gccLightDM}/gcc-lightdm.png";
         extraConfig = ''
           [SeatDefaults]
           greeter-hide-users=true
@@ -149,7 +149,7 @@
 
   environment.extraInit =
     let
-      gcc-background = inputs.self.packages.x86_64-linux.gcc-wallpaper-2021;
+      gcc-background = "${inputs.prolowalls.packages.x86_64-linux.gcc2021}/gcc2021.jpg";
     in
       ''
         if [ "$(id -u)" -ge 10000 ]; then
@@ -161,6 +161,6 @@
 
         _DISPLAY="$(${pkgs.xorg.xrandr}/bin/xrandr | ${pkgs.gnugrep}/bin/grep -w connected | ${pkgs.coreutils}/bin/cut -d' ' -f1)"
         xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor''${_DISPLAY}/workspace0/last-image \
-          --create --type string --set ${gcc-background}/background.jpg
+          --create --type string --set ${gcc-background}
       '';
 }

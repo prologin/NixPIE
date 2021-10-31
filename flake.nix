@@ -5,6 +5,7 @@
     nixpie.url = "git+https://gitlab.cri.epita.fr/cri/infrastructure/nixpie.git";
     nixpkgsMuEditor.url = "github:prologin/nixpkgs/mu-editor";
     futils.url = "github:numtide/flake-utils";
+    prolowalls.url = "github:prologin/prolowalls";
   };
 
   outputs =
@@ -12,6 +13,7 @@
     , nixpie
     , nixpkgsMuEditor
     , futils
+    , prolowalls
     } @ inputs:
     let
       inherit (nixpie.inputs) nixpkgs;
@@ -44,14 +46,6 @@
           profiles = import ./profiles;
         };
 
-        packages =
-          {
-              "${system}" = {
-                prologin-gcc-background = import ./pkgs/gcc-background.nix { inherit pkgs; };
-                gcc-wallpaper-2021 = import ./pkgs/gcc-wallpaper-2021.nix { inherit pkgs; };
-              };
-          };
-
         nixosConfigurations =
           let
             system = "x86_64-linux";
@@ -60,7 +54,7 @@
             recursiveUpdate inputs {
               inherit lib system;
               inherit nixpkgs nixpkgs-master;
-              inherit (self.packages.${system}) prologin-gcc-background;
+              inherit (prolowalls.packages.${system}) gccLogo;
               pkgset = pkgset system;
             }
           ));
