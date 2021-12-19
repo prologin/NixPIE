@@ -5,6 +5,8 @@
     nixpie.url = "git+https://gitlab.cri.epita.fr/cri/infrastructure/nixpie.git";
     nixpkgsMuEditor.url = "github:prologin/nixpkgs/mu-editor";
     futils.url = "github:numtide/flake-utils";
+    nixpkgsMaster.url = "github:NixOS/nixpkgs/master";
+    nixpkgsUnstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
   outputs =
@@ -12,6 +14,8 @@
     , nixpie
     , nixpkgsMuEditor
     , futils
+    , nixpkgsMaster
+    , nixpkgsUnstable
     } @ inputs:
     let
       inherit (nixpie.inputs) nixpkgs;

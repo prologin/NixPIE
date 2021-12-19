@@ -9,6 +9,8 @@
 
   cri.xfce.enable = true;
   cri.i3.enable = lib.mkForce false;
+  cri.machine-state.enable = lib.mkForce false;
+  cri.nuc-led-setter.enable = lib.mkForce false;
 
   services.xserver = {
     layout = lib.mkForce "fr,us,gb";
@@ -38,7 +40,7 @@
         '';
       };
       setupCommands = ''
-        ${pkgs.xorg.setxkbmap}/bin/setxkbmap fr,us,gb
+        ${pkgs.xorg.setxkbmap}/bin/setxkbmap us,fr,gb
       '';
     };
   };
@@ -137,6 +139,8 @@
     };
   };
 
+  users.defaultUserShell = lib.mkForce pkgs.bashInteractive;
+  services.logind.killUserProcesses = true;
 
   services.openafsClient = {
     enable = true;
