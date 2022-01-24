@@ -12,13 +12,14 @@
   cri.machine-state.enable = lib.mkForce false;
   cri.nuc-led-setter.enable = lib.mkForce false;
 
-  networking.hostName = {
+  networking.firewall = {
     enable = true;
     extraCommands = ''
       iptables -A OUTPUT -d 127.0.0.0/8 -j ACCEPT
-      iptables -A OUTPUT -d 10.223.7.253 -j ACCEPT
-      iptables -A OUTPUT -d 10.223.7.242 -j ACCEPT
-      iptables -A OUTPUT -d 10.224.21.53 -j ACCEPT
+      iptables -A OUTPUT -d 10.223.7.253/32 -j ACCEPT
+      iptables -A OUTPUT -d 10.223.7.242/32 -j ACCEPT
+      iptables -A OUTPUT -d 10.224.21.53/32 -j ACCEPT
+      iptables -A OUTPUT -d 163.5.5.1/32 -j ACCEPT
       iptables -P OUTPUT DROP
 
       iptables -A INPUT -p tcp --dport 22 -j ACCEPT
@@ -128,68 +129,9 @@
   cri.ldap.enable = false;
   cri.afs.enable = false;
 
-  services.sssd = {
-    enable = true;
-    config = ''
-      [sssd]
-      config_file_version = 2
-      services = nss, pam
-      domains = LDAP
-
-      [nss]
-      override_shell = ${config.users.defaultUserShell}/bin/bash
-
-      [domain/LDAP]
-      debug_level = 9
-      cache_credentials = true
-      enumerate = true
-
-      id_provider = ldap
-      auth_provider = krb5
-
-      krb5_server = auth.pie.prologin.org
-      krb5_realm = PROLOGIN.ORG
-
-      ldap_uri = ldaps://auth.pie.prologin.org
-      ldap_search_base = dc=prologin,dc=org
-      ldap_user_search_base = ou=users,dc=prologin,dc=org?subtree?(objectClass=posixAccount)
-      ldap_group_search_base = ou=groups,dc=prologin,dc=org?subtree?(objectClass=posixGroup)
-      ldap_id_use_start_tls = true
-      ldap_schema = rfc2307bis
-      ldap_user_gecos = cn
-
-      entry_cache_timeout = 600
-      ldap_network_timeout = 2
-    '';
-  };
-
-  users.ldap = {
-    enable = true;
-    base = "dc=prologin,dc=org";
-    server = "ldaps://auth.pie.prologin.org";
-    daemon.enable = true;
-  };
-
   cri.users.enable = lib.mkForce false;
 
   prologin.auth.enable = true;
-
-  krb5 = {
-    enable = true;
-    libdefaults = {
-      dns_lookup_kdc = true;
-      default_realm = "PROLOGIN.ORG";
-      dns_lookup_realm = false;
-      rdns = false;
-    };
-
-    realms = {
-      "PROLOGIN.ORG" = {
-        kdc = [ "auth.pie.prologin.org" ];
-        admin_server = "auth.pie.prologin.org";
-      };
-    };
-  };
 
   users.defaultUserShell = lib.mkForce pkgs.bashInteractive;
   services.logind.killUserProcesses = true;
@@ -201,7 +143,6 @@
     cache = { diskless = true; };
     fakestat = true;
   };
-
 
   environment.extraInit = ''
     if [ "$(id -u)" -ge 10000 ]; then
