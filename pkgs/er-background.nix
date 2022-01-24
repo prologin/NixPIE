@@ -6,7 +6,9 @@ pkgs.stdenv.mkDerivation {
 
   src = ../assets/login_screen.png;
 
-  builder = pkgs.writeShellScript "builder" ''
+  phases = [ "installPhase" ];
+
+  installPhase = pkgs.writeShellScript "builder" ''
     mkdir $out
     cp $src $out/lightdm.png
   '';
