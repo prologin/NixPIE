@@ -95,10 +95,7 @@
     "machine-state": {
       "inputs": {
         "futils": "futils_3",
-        "nixpkgs": [
-          "nixpie",
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
         "lastModified": 1636702668,
@@ -120,7 +117,7 @@
         "flake-compat": "flake-compat",
         "futils": "futils_2",
         "machine-state": "machine-state",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgsMaster": "nixpkgsMaster",
         "nixpkgsMaths": "nixpkgsMaths",
         "nixpkgsUnstable": "nixpkgsUnstable",
@@ -142,16 +139,15 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1635719588,
-        "narHash": "sha256-pWjdy0NheM97NsPE6+jUnr5LYyeA0sBGTdw4mfXMGZQ=",
+        "lastModified": 1643031382,
+        "narHash": "sha256-hZzkxztdrXfMrvrHwz/iEXuPy72ZIkzE6Hz0FeqUSXI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f0869b1a2c0b150aac26e10bb5c2364ffb2e804f",
+        "rev": "0f986f3b0292c557177d20d4e4e17a45447577d0",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-21.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -252,13 +248,41 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1635719588,
+        "narHash": "sha256-pWjdy0NheM97NsPE6+jUnr5LYyeA0sBGTdw4mfXMGZQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f0869b1a2c0b150aac26e10bb5c2364ffb2e804f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-21.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1643031382,
+        "narHash": "sha256-hZzkxztdrXfMrvrHwz/iEXuPy72ZIkzE6Hz0FeqUSXI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "0f986f3b0292c557177d20d4e4e17a45447577d0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nuc-led-setter": {
       "inputs": {
         "futils": "futils_4",
-        "nixpkgs": [
-          "nixpie",
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1630892898,

@@ -46,12 +46,14 @@
       anySystemOutputs = {
         nixosModules = {
           profiles = import ./profiles;
+          prologin-auth = import ./modules/auth.nix;
         };
 
         packages =
           {
               "${system}" = {
                 prologin-gcc-background = import ./pkgs/gcc-background.nix { inherit pkgs; };
+                prologin-er-background = import ./pkgs/er-background.nix { inherit pkgs; };
               };
           };
 
@@ -63,7 +65,8 @@
             recursiveUpdate inputs {
               inherit lib system;
               inherit nixpkgs nixpkgs-master;
-              inherit (self.packages.${system}) prologin-gcc-background;
+              inherit (self.packages.${system}) prologin-gcc-background prologin-er-background;
+              inherit (self.nixosModules) prologin-auth;
               pkgset = pkgset system;
             }
           ));

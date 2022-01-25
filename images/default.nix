@@ -59,6 +59,7 @@ let
 
   hosts = lib.genAttrs [
     "prologin-gcc"
+    "prologin-er"
   ]
     nixosSystem;
 in
