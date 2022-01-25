@@ -10,6 +10,6 @@ pkgs.stdenv.mkDerivation {
 
   installPhase = pkgs.writeShellScript "builder" ''
     mkdir $out
-    cp $src $out/lightdm.png
+    cp $src $out/login_screen.png
   '';
 }
