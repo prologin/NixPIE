@@ -107,7 +107,6 @@
     emacs
     rustc
     cargo
-    vscode
 
     codeblocks
     eclipses.eclipse-java
@@ -120,6 +119,18 @@
     atom
     jetbrains.rider
   ];
+
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      ms-python.python
+      redhat.java
+      haskell.haskell
+      rust-lang.rust
+      julialang.language-julia
+      freebroccolo.reasonml
+    ];
+  };
 
   programs.java = {
     enable = true;
