@@ -123,19 +123,8 @@
     jetbrains.pycharm-community
     atom
     jetbrains.rider
+    vscode
   ];
-
-  programs.vscode = {
-    enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      ms-python.python
-      redhat.java
-      haskell.haskell
-      rust-lang.rust
-      julialang.language-julia
-      freebroccolo.reasonml
-    ];
-  };
 
   programs.java = {
     enable = true;
