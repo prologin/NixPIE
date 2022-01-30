@@ -18,12 +18,17 @@
       iptables -A OUTPUT -d 127.0.0.0/8 -j ACCEPT
       iptables -A OUTPUT -d 10.223.7.253/32 -j ACCEPT
       iptables -A OUTPUT -d 10.223.7.242/32 -j ACCEPT
+      iptables -A OUTPUT -d 10.223.7.42/32 -j ACCEPT
       iptables -A OUTPUT -d 10.224.21.53/32 -j ACCEPT
       iptables -A OUTPUT -d 163.5.5.1/32 -j ACCEPT
       iptables -P OUTPUT DROP
 
       iptables -A INPUT -p tcp --dport 22 -j ACCEPT
     '';
+  };
+
+  networking.hosts = {
+    "10.223.7.42" = [ "demi-finale.prologin.org" ];
   };
 
   services.xserver = {
